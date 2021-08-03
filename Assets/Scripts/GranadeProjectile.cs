@@ -7,19 +7,20 @@ using UnityEngine;
 public class GranadeProjectile : MonoBehaviour
 {
     [SerializeField] private  float delay = 3f;
-    [SerializeField] private  float granadeRadius = 5000f;
+    [SerializeField] private float granadeRadius;
     [SerializeField] private float granadeSpeed;
+    [SerializeField] private ParticleSystem _explosionParticleSystem;
     
-
-    private float countDown;
-    private bool hasExplosed;
+    private float _countDown;
+    private bool _hasExplosed;
 
     void Start()
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * granadeSpeed, ForceMode.Impulse);
-        countDown = delay;
+        _countDown = delay;
         
-
+        var psShape = _explosionParticleSystem.shape;
+        psShape.radius = granadeRadius;
     }
 
     private void OnDrawGizmos()
@@ -30,11 +31,11 @@ public class GranadeProjectile : MonoBehaviour
 
     void Update()
     {
-        countDown -= Time.deltaTime;
-        if (countDown <= 0f && !hasExplosed)
+        _countDown -= Time.deltaTime;
+        if (_countDown <= 0f && !_hasExplosed)
         {
             Explode();
-            hasExplosed = true;
+            _hasExplosed = true;
         }
     }
 
@@ -52,7 +53,8 @@ public class GranadeProjectile : MonoBehaviour
                 targetHit.CheckHit(1, gameObject);
             }
         }
-
+        ParticleSystem ps = Instantiate(_explosionParticleSystem, transform.position, Quaternion.identity);
+        ps.Play();
         Destroy(gameObject);
     }
 }
