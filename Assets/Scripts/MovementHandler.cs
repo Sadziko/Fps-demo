@@ -9,7 +9,8 @@ public class MovementHandler : MonoBehaviour
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpHeight = 10.0f;
     [SerializeField]private float gravityMultiplier = 1;
- 
+
+    private InputActionMap _movementActionMap;
     private CharacterController _characterController;
     private Camera _playerCam;
     private InputAction _movementInput;
@@ -20,6 +21,7 @@ public class MovementHandler : MonoBehaviour
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        _movementActionMap = GetComponent<PlayerInput>().actions.FindActionMap("Movement");
         _movementInput = GetComponent<PlayerInput>().actions.FindAction("BasicMovement");
         _playerCam = _player.PlayerCamera;
     }
@@ -89,5 +91,15 @@ public class MovementHandler : MonoBehaviour
     {
         if(_continousShootingCoroutine != null)
             StopCoroutine(_continousShootingCoroutine);
+    }
+
+    public void EnableControls()
+    {
+        _movementActionMap.Enable();
+    }
+
+    public void DisableControls()
+    {
+        _movementActionMap.Disable();
     }
 }
