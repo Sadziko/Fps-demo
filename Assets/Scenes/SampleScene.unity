@@ -165,8 +165,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetsList: []
-  WinScreenOverlay: {fileID: 1683458668}
-  TimeToRestart: 3
+  onWinCondition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1945859158}
+        m_MethodName: SwitchScreen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1683458670}
+          m_ObjectArgumentAssemblyTypeName: UiScreen, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 512007632}
+        m_MethodName: DisableControls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &114591869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,18 +1212,7 @@ MonoBehaviour:
     m_ActionId: 73957cca-37e6-496d-b5c5-e84b81a2c901
     m_ActionName: Movement/ChangeWeapon[/Keyboard/q]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 512007632}
-        m_MethodName: OnZoom
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: b24ff389-81fc-4c89-a3de-3568ba8c5ba7
     m_ActionName: Movement/Zoom[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
@@ -3231,8 +3243,8 @@ GameObject:
   - component: {fileID: 1683458669}
   - component: {fileID: 1683458672}
   - component: {fileID: 1683458671}
-  - component: {fileID: 1683458670}
   - component: {fileID: 1683458673}
+  - component: {fileID: 1683458670}
   m_Layer: 0
   m_Name: Game_ending_screen
   m_TagString: Untagged
@@ -3270,7 +3282,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1683458668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7b19dc4fdd199a46a71d5213b3add0f, type: 3}
+  m_Script: {fileID: 11500000, guid: f10617a20ce136445bbb6d5895924424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartSelectable: {fileID: 0}
@@ -3280,6 +3292,43 @@ MonoBehaviour:
   onScreenClose:
     m_PersistentCalls:
       m_Calls: []
+  ScreenTime: 5
+  onTimeComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1945859158}
+        m_MethodName: DisableScreen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1683458670}
+          m_ObjectArgumentAssemblyTypeName: UiScreen, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 512007632}
+        m_MethodName: EnableControls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 75617647}
+        m_MethodName: InitialSetup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1683458671
 MonoBehaviour:
   m_ObjectHideFlags: 0
