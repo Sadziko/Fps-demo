@@ -14,7 +14,7 @@ public class UiScreen : MonoBehaviour
     public UnityEvent onScreenStart = new UnityEvent();
     public UnityEvent onScreenClose = new UnityEvent();
     
-    void Start()
+    protected void Start()
     {
         if (StartSelectable)
         {
