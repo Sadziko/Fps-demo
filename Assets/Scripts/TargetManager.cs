@@ -35,7 +35,6 @@ public class TargetManager : MonoBehaviour
     {
         if (_targetCount == 0)
         {
-            Debug.Log("You win!");
             onWinCondition.Invoke();
         }
     }
