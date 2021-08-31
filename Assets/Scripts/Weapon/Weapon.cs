@@ -35,6 +35,8 @@ public class Weapon : MonoBehaviour, IWeapon
 
     public void Shoot()
     {
+        RaycastHit hit;
+        
         if (useAmmo && ammoAmount <= 0)
             return;
 

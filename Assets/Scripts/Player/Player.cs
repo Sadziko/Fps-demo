@@ -11,11 +11,17 @@ public class Player : MonoBehaviour
     
     public Camera PlayerCamera;
     public List<Weapon> WeaponsList;
+    
+    [SerializeField] private  CharacterController _characterController;
     private int _currentWeaponIndex;
+    private Vector3 _startingPlayerPos;
+    private Quaternion _startingRotation;
     
     private void Start()
     {
         SetCurrentWeaponToZero();
+        _startingPlayerPos = transform.position;
+        _startingRotation = transform.rotation;
     }
 
     public void OnChangeWeapon(InputAction.CallbackContext context)
@@ -41,6 +47,13 @@ public class Player : MonoBehaviour
     {
         MovementHandler.DisableControls();
         MouseLook.UnlockCursor();
+    }
+
+    public void ResetPlayerPosition()
+    {
+        _characterController.enabled = false;
+        gameObject.transform.SetPositionAndRotation(_startingPlayerPos,_startingRotation);
+        _characterController.enabled = true;
     }
 
 
